@@ -4,9 +4,6 @@ from bs4 import BeautifulSoup
 office_default_image = "https://cdn-icons-png.flaticon.com/128/3160/3160762.png"
 
 def get_remoteok_jobs(term="python"):
-
-    print(f"input tert is {term}")
-
     url = f"https://remoteok.com/remote-{term}-jobs"
     request = requests.get(url, headers={"User-Agent": "Kimchi"})
     if request.status_code == 200:
@@ -50,9 +47,6 @@ def get_remoteok_jobs(term="python"):
         print("Can't get jobs.")
 
 def get_wwr_jobs(job="python"):
-
-    print(f"input tert is {job}")
-
     jobs = []
     url = "https://weworkremotely.com/remote-jobs/search?term="
 
