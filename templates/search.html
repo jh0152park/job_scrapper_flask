@@ -1,0 +1,111 @@
+<!doctype html>
+<html lang="en"  data-theme="dark">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@1/css/pico.min.css">
+    <title>Search Results</title>
+
+    <style>
+        :root {
+            --primary: #fdd835;
+        }
+
+        .title {
+            display: flex;
+        }
+
+        @keyframes title_image_animation {
+            from {
+                transform: none;
+            }
+            to {    
+                transform: rotateY(360deg);
+            }
+        }
+
+        .main_image {
+            margin-left: 10px;
+            width: 70px;
+            height: 60px;
+            animation: title_image_animation 1.5s ease-in-out infinite;
+        }
+
+        .result_image {
+            display: flex;
+            justify-content: right;
+        }
+
+        @keyframes shake {
+            from {
+                transform: rotate(1deg);
+            }
+            to {
+                transform: rotate(-1deg);
+            }
+        }
+
+        #download {
+            font-size: 15px;
+            color: yellowgreen;
+        }
+
+        #download:hover {
+            cursor: pointer;
+            font-size: 15px;
+            color: tomato;
+        }
+    </style>
+  </head>
+  <body>
+    <main class="container">
+      <div class="title">
+        <div>
+            <h1>{{skill}} Search Results</h1>
+        </div>
+        <div>
+            <img src="https://nomadcoders.co/m.svg" class="main_image">
+        </div>
+      </div>
+
+      <div class="result_image">
+        <h4>There are {{jobs_count}} jobs!!</h4>
+        <img src="{{url_for('static', filename = '/images/result.png')}}">
+      </div>
+
+
+    <a id="download" target="_blank" href="/export?skill={{skill}}">
+        Click to download CSV file 
+        <i id="excel" class="fas fa-file-excel fa-lg"></i>
+    </a>
+    
+
+      <figure>
+        <table role="grid">
+        <thead>
+            <tr>
+                <th>Company</th>
+                <th>Title</th>
+                <th>Locate</th>
+                <th>Position</th>
+                <th>Link</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for job in jobs %}
+            <tr>
+                <td>{{job.company}}</td>
+                <td>{{job.title}}</td>
+                <td>{{job.locate}}</td>
+                <td>{{job.type}}</td>
+                <td><a href="{{job.link}}" target="_blank">Apply Now&rarr;</a></td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    </figure>
+
+    </main>
+    <script src="https://kit.fontawesome.com/6478f529f2.js" crossorigin="anonymous"></script>
+  </body>
+</html>

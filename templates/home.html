@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="en"  data-theme="dark">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@1/css/pico.min.css">
+    <title>Job Scraper</title>
+
+    <style>
+        :root {
+            --primary: #fdd835;
+        }
+
+        .title {
+            display: flex;
+        }
+
+        @keyframes title_image_animation {
+            from {
+                transform: none;
+            }
+            to {    
+                transform: rotateY(360deg);
+            }
+        }
+
+        .main_image {
+            margin-left: 10px;
+            width: 70px;
+            height: 60px;
+            animation: title_image_animation 1.5s ease-in-out infinite;
+        }
+
+        .search_image {
+            display: flex;
+            justify-content: right;
+        }
+    </style>
+  </head>
+  <body>
+    <main class="container">
+      <div class="title">
+        <div>
+            <h1>Job Scraper</h1>
+        </div>
+        <div>
+            <img src="https://nomadcoders.co/m.svg" class="main_image">
+        </div>
+      </div>
+    <form action="/search">
+        <input name="skill" type="text" placeholder="Please Enter Tech Stack">
+        <button>Search</button>
+        <div class="search_image">
+            <h4>You still jobless?ㅋㅋ</h4>
+            <img src="{{url_for('static', filename = '/images/search.png')}}">
+        </div>
+    </form>
+    </main>
+  </body>
+</html>
